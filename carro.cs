@@ -1,19 +1,30 @@
-
 interface ICarro{
-
     string GetCarroType();
 
 }
 
 
-
 class Carro : ICarro{
 
-    public string GetCarroType(){
+    public class Carro : ICarro<Carro>{
+    public string? marcas { get; set;}
 
+    public string menu(List<string> marcas){
+        string op;
+
+        Console.Clear();
+        Console.Write("escoha a marca desejada: ");
+        op = Console.ReadLine();
+        return op;
+        }
+    }
+
+    public string GetCarroType(){
         return "Modelo basico";
 
     }
+
+
 }
 
 class CarroDecorator : ICarro {
@@ -21,7 +32,7 @@ class CarroDecorator : ICarro {
     private ICarro _carro;
 
     public CarroDecorator(ICarro carro){
-        
+
         _carro = carro;
 
     }
